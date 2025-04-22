@@ -1,0 +1,34 @@
+Docker
+
+Docker solves environment inconsistency by using containerization, a lightweight form of virtualization. Unlike hypervisors that run full virtual machines, Docker shares the host OS kernel, reducing overhead. This allows faster, consistent deployment across systems with minimal resources, making it more efficient and lightweight compared to traditional virtualization solutions.
+
+Demo:-
+>>docker pull hello_world
+
+>>docker run hello_world
+
+Here, Image means Class and Containers stands for Object as relate to Object Oriented Programming.
+
+Docker doemon :- A Process that always runs at background.
+
+Using Ubuntu:-
+
+>>docker pull ubuntu
+>>docker run -it ubuntu
+>>exit // to exit the system
+
+Docker Network:-
+Let 2 containers talk without the need of IP address.
+
+>>docker network ls
+>>docker network create mongo_network
+>>docker run -d -p 27017:27017 --name mongo --network mongo -network -e MONGO_INITDB_ROOT_USERNAME = admin -e MONGO_INITDB_ROOT_PASSWORD = admin mongo
+
+>> docker ps //image running
+>>docker ps -a//image stored
+
+* -p flag :- Port binding.
+
+//running mongo_express container on isolated network mongo_network.
+
+>>docker run -d -p 8081:8081 --name mongo-express --network mongo_network -e ME_CONFIG_MONGODB_ADMINPASSWORD=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=admin -e ME_CONFIG_MONGODB_URL= "mongodb://admin:admin@mongo:27017" mongo-express
